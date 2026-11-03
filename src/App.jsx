@@ -92,7 +92,7 @@ function handleClick(){
 return(
   <button onClick={handleClick}>Click Me</button>
 );}
-export default App;*/
+export default App;
 
 //name display using input event
 // function App(){
@@ -136,4 +136,26 @@ function Counter(){
     </div>
   );
 }
-export default Counter;
+export default Counter;*/
+
+//react toggle app
+function App(){
+  const[status,setStatus]=useState("off");
+  let message;
+  if (status ==='OFF'){
+    message='ON';
+  }
+  else{
+    message='OFF';
+  }
+  return(
+    <div>
+   <h2> Toggle App</h2>
+    <h4>Status:{status}</h4>
+<button onClick={() => setStatus(message)}>
+        {status === "off" ? "Turn On" : "Turn Off"}
+      </button>
+    </div>
+  );
+}
+export default App;
