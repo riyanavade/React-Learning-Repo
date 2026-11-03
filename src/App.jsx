@@ -136,7 +136,7 @@ function Counter(){
     </div>
   );
 }
-export default Counter;*/
+export default Counter;
 
 //react toggle app
 function App(){
@@ -158,4 +158,29 @@ function App(){
     </div>
   );
 }
-export default App;
+export default App;*/
+
+//color changing pallet
+function Pallet(){
+  const [color,setColor]=useState("#ffffff");
+  return (
+    <div>
+        <h2>color changing pallet</h2>
+        <input type="color" value={color} onChange={(event)=>setColor(event.target.vakue)}/>
+
+<div
+  style={{
+    width:"250px",
+    height:"250px",
+    bachgroundColor:color,
+    border: "1px solid white",
+    marginTop:"10px",
+  }}>
+</div>
+  <p>Selected Color:{color}</p>
+    </div>
+   
+    
+  );
+}
+export default Pallet;
