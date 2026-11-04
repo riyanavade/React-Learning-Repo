@@ -230,7 +230,7 @@ function display(){
     </div>
   );
 }
-export default display;*/
+export default display;
 
 //using an array index as a key
 function App() {
@@ -247,4 +247,51 @@ function App() {
     );
 }
 
-export default App;
+export default App;*/
+
+//this is React To-Do App
+
+function Form() {
+
+    const [input, setInput] = useState("");
+    const [tasks, setTasks] = useState([]);
+
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        if (input.trim() === "") {
+            return;
+        }
+
+        setTasks([...tasks, input]);
+        setInput("");
+    }
+
+    return (
+        <div>
+            <h2>To-Do App</h2>
+
+            <form onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    value={input}
+                    placeholder="Enter your task"
+                    onChange={(event) => setInput(event.target.value)}
+                />
+
+                <button type="submit">Add Task</button>
+            </form>
+
+            <h3>My Tasks</h3>
+
+            {tasks.map((task, index) => (
+                <p key={index}>{task}</p>
+            ))}
+
+        </div>
+    );
+}
+
+export default Form;
+
+
