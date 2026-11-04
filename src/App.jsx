@@ -158,7 +158,7 @@ function App(){
     </div>
   );
 }
-export default App;*/
+export default App;
 
 //color changing pallet
 function Pallet(){
@@ -184,3 +184,67 @@ function Pallet(){
   );
 }
 export default Pallet;
+
+//map() function for displaying each element in the array
+function App(){
+  const students=['vittal','panduranga','rama','krishna','vasudev','hari','paramatma'];
+  return (
+    <div>
+    <h2>Student Names</h2>
+
+    {students.map((student) => (
+      <p>{student}</p>
+    ))}
+    </div>
+  );
+}
+export default App;
+
+//display list of items through object
+function display(){
+  const obj1=[{
+    ID:1,
+    name:"Riya",
+    course:"MCA",
+    RollNo: 23
+  },{
+    ID:2,
+    name:"sangeeta",
+    course:"MCA",
+    RollNO: 77
+  }];
+
+  return (
+    <div>
+      <h2> displaying list of items through objects</h2>
+      {obj1.map((object) => (
+        <div>
+          <p>Name: {object.name}</p>
+          <p>RollNO: {object.RollNO}</p>
+          <h2>using key concept</h2>
+          <p key={object.ID}>{object.name}</p>
+        </div>
+      ))}
+
+
+    </div>
+  );
+}
+export default display;*/
+
+//using an array index as a key
+function App() {
+    const subjects = ["JavaScript", "React", "Python"];
+
+    return (
+        <div>
+            {subjects.map((subject, index) => (
+                <p key={index}>
+                    {subject}
+                </p>
+            ))}
+        </div>
+    );
+}
+
+export default App;
