@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
@@ -247,7 +247,7 @@ function App() {
     );
 }
 
-export default App;*/
+export default App;
 
 //this is React To-Do App
 function Form() {
@@ -353,4 +353,24 @@ function Form() {
   );
 }
 
-export default Form;
+export default Form;*/
+
+//useEffects examples
+function App(){
+  
+    //document.title="Welcome to useEffects"
+    //console.log("Welcome to useEffect")
+    const [count,setCount]=useState(0);
+    useEffect(() =>{
+      console.log("count updated:",count);
+    }),[count];
+  
+  return(
+    <div>
+      <h2>This is React Learning Platform</h2>
+      <h3>count:{count}</h3>
+      <button onClick={() =>setCount(count+1)}>Add</button>
+    </div>
+  );
+}
+export default App;
