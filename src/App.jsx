@@ -353,7 +353,7 @@ function Form() {
   );
 }
 
-export default Form;*/
+export default Form;
 
 //useEffects examples
 function App(){
@@ -373,4 +373,157 @@ function App(){
     </div>
   );
 }
+export default App;
+
+//API in react
+
+
+function App() {
+
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+
+        fetch("https://jsonplaceholder.typicode.com/users")
+            .then(response => response.json())
+            .then(data => {
+                setUsers(data);
+            });
+
+    }, []);
+
+    return (
+        <div>
+            <h2>User List</h2>
+
+            {users.map(user => (
+                <p key={user.id}>{user.name}</p>
+            ))}
+        </div>
+    );
+}
+
+export default App;
+
+
+//fetch data when city changes
+function App(){
+  const [city,setCity]=useState("dharwad");
+  const [whether,setWhether]=useState(null);
+  useEffect(() =>{
+    console.log("fetch weather for:",city);
+  }),[city];
+  return(
+    <div>
+      <h2>Whether Search</h2>
+      <input value={city} onChange={(event) => setCity(event.target.value)}/>
+       <p>Selected city: {city}</p>
+    </div>
+  );
+}
+export default App;
+
+function App() {
+
+    const [loading, setLoading] = useState(false);
+
+    function handleClick() {
+        setLoading(true);
+    }
+
+    return (
+        <div>
+            <button onClick={handleClick}>
+                Load Data
+            </button>
+
+            {loading && <p>Loading...</p>}
+        </div>
+    );
+}
+export default App;
+
+//API with loding 
+function App() {
+
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+
+        fetch("https://jsonplaceholder.typicode.com/users")
+            .then(response => response.json())
+            .then(data => {
+                setUsers(data);
+                setLoading(false);
+            });
+
+    }, []);
+
+    if (loading) {
+        return <h2>Loading users...</h2>;
+    }
+
+    return (
+        <div>
+            <h2>Users</h2>
+
+            {users.map(user => (
+                <p key={user.id}>{user.name}</p>
+            ))}
+        </div>
+    );
+}
+
+export default App;*/
+
+//API with error handling 
+function App() {
+
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+
+    useEffect(() => {
+
+        fetch("https://jsonplaceholder.typicode.com/users")
+            .then(response => {
+
+                if (!response.ok) {
+                    throw new Error("Failed to fetch users");
+                }
+
+                return response.json();
+            })
+            .then(data => {
+                setUsers(data);
+            })
+            .catch(error => {
+                setError(error.message);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+
+    }, []);
+
+    if (loading) {
+        return <h2>Loading...</h2>;
+    }
+
+    if (error) {
+        return <h2>{error}</h2>;
+    }
+
+    return (
+        <div>
+            <h2>User List</h2>
+
+            {users.map(user => (
+                <p key={user.id}>{user.name}</p>
+            ))}
+        </div>
+    );
+}
+
 export default App;
