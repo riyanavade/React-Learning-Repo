@@ -475,7 +475,7 @@ function App() {
     );
 }
 
-export default App;*/
+export default App;
 
 //API with error handling 
 function App() {
@@ -522,6 +522,119 @@ function App() {
             {users.map(user => (
                 <p key={user.id}>{user.name}</p>
             ))}
+        </div>
+    );
+}
+
+export default App;*/
+
+//Whether App with API 
+
+function App() {
+
+    const [city, setCity] = useState("Dharwad");
+    const [searchCity, setSearchCity] = useState("Dharwad");
+
+    const [weather, setWeather] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+
+    const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+
+    useEffect(() => {
+
+        const fetchWeather = async () => {
+
+            setLoading(true);
+            setError("");
+            setWeather(null);
+
+            try {
+                const response = await fetch(
+                    `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(searchCity)}&appid=${API_KEY}&units=metric`
+                );
+
+                if (!response.ok) {
+    const errorData = await response.json();
+
+    throw new Error(
+        `Error ${response.status}: ${errorData.message}`
+    );
+}
+
+                const data = await response.json();
+
+                setWeather(data);
+
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchWeather();
+
+    }, [searchCity]);
+
+    function handleChange(event) {
+        setCity(event.target.value);
+    }
+
+    function handleSearch(event) {
+        event.preventDefault();
+
+        if (city.trim() === "") {
+            setError("Please enter a city name");
+            setWeather(null);
+            return;
+        }
+
+        setSearchCity(city.trim());
+    }
+
+    return (
+        <div>
+            <h2>Weather App</h2>
+
+            <form onSubmit={handleSearch}>
+                <input
+                    type="text"
+                    placeholder="Enter city name"
+                    value={city}
+                    onChange={handleChange}
+                />
+
+                <button type="submit">
+                    Search
+                </button>
+            </form>
+
+            {loading && <h3>Loading weather...</h3>}
+
+            {error && <p>{error}</p>}
+
+            {weather && !loading && !error && (
+                <div>
+                    <h2>Weather in {weather.name}</h2>
+
+                    <p>
+                        Temperature: {weather.main.temp} °C
+                    </p>
+
+                    <p>
+                        Description: {weather.weather[0].description}
+                    </p>
+
+                    <p>
+                        Humidity: {weather.main.humidity}%
+                    </p>
+
+                    <p>
+                        Wind Speed: {weather.wind.speed} m/s
+                    </p>
+                </div>
+            )}
         </div>
     );
 }
