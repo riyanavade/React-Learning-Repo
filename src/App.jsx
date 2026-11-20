@@ -594,8 +594,8 @@ function App() {
     }
 
     return (
-        <div>
-            <h2>Weather App</h2>
+        <div className="weather-container">
+            <h2 className="weather-title">Weather Search App</h2>
 
             <form onSubmit={handleSearch}>
                 <input

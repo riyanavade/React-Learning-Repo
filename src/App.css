@@ -182,3 +182,43 @@
     border-right-color: var(--border);
   }
 }
+
+.weather-container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 25px;
+    text-align: center;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.weather-container h1 {
+    color: #2563eb;
+}
+
+.weather-container input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.weather-container button {
+    padding: 10px 15px;
+    margin-left: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+.weather-container button:hover {
+    background-color: #1d4ed8;
+}
+.weather-title {
+    font-size: 32px;
+    color:  #2563eb;
+    text-align: center;
+    margin-bottom: 20px;
+}
