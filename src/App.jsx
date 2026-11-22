@@ -3,12 +3,16 @@
 //import reactLogo from './assets/react.svg';
 //import viteLogo from './assets/vite.svg';
 import "./App.css";
+import { useContext } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Weather from "./Weather";
 import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
 import useFetch from "./hooks/useFetch";
+
+import Navbar from "./components/Navbar";
+import { AppContext } from "./context/AppContext";
 
 //import {useState} from 'react'
 
@@ -683,7 +687,16 @@ function Users() {
 }
 
 function App() {
+    const { theme, language } = useContext(AppContext);
     return (
+        <div className={theme}>
+            <Navbar />
+
+            <h1>
+                {language === "en"
+                    ? "Welcome to my application!"
+                    : "ನನ್ನ ಅಪ್ಲಿಕೇಶನ್‌ಗೆ ಸ್ವಾಗತ!"}
+            </h1>
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -691,6 +704,7 @@ function App() {
             <Route path="/weather" element={<Weather />} />
             <Route path="/users" element={<Users />} />
         </Routes>
+        </div>
     );
 }
 

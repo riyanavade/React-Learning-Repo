@@ -273,3 +273,27 @@ h1 {
   text-align:left;
 
 }
+.light {
+    background-color: #ffffff;
+    color: #222222;
+    min-height: 100vh;
+}
+
+.dark {
+    background-color: #1e293b;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+}
