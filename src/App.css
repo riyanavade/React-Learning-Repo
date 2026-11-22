@@ -236,8 +236,7 @@
     width:100%;
     margin:50px auto;
     bottom:auto;
-  align-self: flex-end; /* Pushes only this element to the right edge */
-  margin-right: 20px;
+  
 }
 h1 {
     color: #222222;
