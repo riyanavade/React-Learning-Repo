@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import WeatherSearch from "../components/WeatherSearch";
+import WeatherCard from "../components/WeatherCard";
+import Loading from "../components/Loading";
+import ErrorMessage from "../components/ErrorMessage";
 
 
 function Weather() {
@@ -71,45 +75,20 @@ function Weather() {
             <button onClick={() => navigate("/")}>
         Home
       </button>
-
-            <form onSubmit={handleSearch}>
-                <input
-                    type="text"
-                    placeholder="Enter city name"
-                    value={city}
-                    onChange={handleChange}
-                />
-
-                <button type="submit">
-                    Search
-                </button>
-            </form>
+<WeatherSearch
+    city={city}
+    onCityChange={handleChange}
+    onSearch={handleSearch}
+/>
             <div className="weather-info">
-                {loading && <h3>Loading weather...</h3>}
+               {loading && <Loading />}
 
-            {error && <p>{error}</p>}
+{error && <ErrorMessage message={error} />}
 
-            {weather && !loading && !error && (
-                <div>
-                    <h2>Weather in {weather.name}</h2>
-
-                    <p>
-                        Temperature: {weather.main.temp} °C
-                    </p>
-
-                    <p>
-                        Description: {weather.weather[0].description}
-                    </p>
-
-                    <p>
-                        Humidity: {weather.main.humidity}%
-                    </p>
-
-                    <p>
-                        Wind Speed: {weather.wind.speed} m/s
-                    </p>
-                </div>
-            )}
+           {weather && !loading && !error && (
+    <WeatherCard weather={weather} />
+)}
+          
             </div>
         </div>
     );

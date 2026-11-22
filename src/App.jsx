@@ -5,10 +5,10 @@
 import "./App.css";
 import { useContext } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import Weather from "./Weather";
-import Home from "./Home";
-import About from "./About";
-import Contact from "./Contact";
+import Weather from "./pages/Weather";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import useFetch from "./hooks/useFetch";
 
 import Navbar from "./components/Navbar";
