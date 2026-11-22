@@ -1,8 +1,11 @@
-import { useEffect, useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+//import { useEffect, useState } from 'react';
+//import heroImg from './assets/hero.png';
+//import reactLogo from './assets/react.svg';
+//import viteLogo from './assets/vite.svg';
+import "./App.css";
+import { Routes, Route, Link } from "react-router-dom";
+import Weather from "./Weather";
+
 //import {useState} from 'react'
 
 /*function Student(props){
@@ -526,7 +529,7 @@ function App() {
     );
 }
 
-export default App;*/
+export default App;
 
 //Whether App with API 
 
@@ -609,8 +612,8 @@ function App() {
                     Search
                 </button>
             </form>
-
-            {loading && <h3>Loading weather...</h3>}
+            <div className="weather-info">
+                {loading && <h3>Loading weather...</h3>}
 
             {error && <p>{error}</p>}
 
@@ -635,8 +638,57 @@ function App() {
                     </p>
                 </div>
             )}
+            </div>
         </div>
     );
+}
+
+export default App;*/
+
+
+//REACT ROUTER & BROWSER ROUTER
+
+function Home() {
+  return (
+    <div>
+      <h2>Home Page</h2>
+
+      <nav>
+        <Link to="/about">About</Link>{" "}
+        <Link to="/contact">Contact</Link>{" "}
+        <Link to="/weather">Weather</Link>
+      </nav>
+    </div>
+  );
+}
+
+function About() {
+  return (
+    <div>
+      <h1>About</h1>
+      <Link to="/">Back to Home page</Link>
+    </div>
+  );
+}
+
+function Contact() {
+  return (
+    <div>
+      <h1>Contact</h1>
+      <Link to="/">Back to Home page</Link>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/weather" element={<Weather />} />
+    </Routes>
+  );
 }
 
 export default App;
