@@ -245,3 +245,31 @@ h1 {
     margin-top: 30px;
 }
 
+.home-layout{
+  background-color: rgb(244, 247, 196);
+}
+.home-layout h2 {
+    color:olive;
+    text-align: center;
+
+}
+
+.home-layout h1{
+    color:rgb(170, 46, 71);
+    text-align: left;
+}
+.home-layout h3{
+  color:rgb(241, 86, 135);
+  text-align: left;
+}
+.home-layout p{
+  color:rgb(7, 7, 7);
+  text-align: left;
+}
+.home-layout ul{
+  display: flex;
+  flex-direction: column;
+  color:rgb(11, 11, 10);
+  text-align:left;
+
+}

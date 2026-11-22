@@ -5,6 +5,10 @@
 import "./App.css";
 import { Routes, Route, Link } from "react-router-dom";
 import Weather from "./Weather";
+import Home from "./Home";
+import About from "./About";
+import Contact from "./Contact";
+import useFetch from "./hooks/useFetch";
 
 //import {useState} from 'react'
 
@@ -648,47 +652,49 @@ export default App;*/
 
 //REACT ROUTER & BROWSER ROUTER
 
-function Home() {
-  return (
-    <div>
-      <h2>Home Page</h2>
+function Users() {
 
-      <nav>
-        <Link to="/about">About</Link>{" "}
-        <Link to="/contact">Contact</Link>{" "}
-        <Link to="/weather">Weather</Link>
-      </nav>
-    </div>
-  );
-}
+    const { data, loading, error } = useFetch(
+        "https://jsonplaceholder.typicode.com/users"
+    );
 
-function About() {
-  return (
-    <div>
-      <h1>About</h1>
-      <Link to="/">Back to Home page</Link>
-    </div>
-  );
-}
+    if (loading) {
+        return <h2>Loading users...</h2>;
+    }
 
-function Contact() {
-  return (
-    <div>
-      <h1>Contact</h1>
-      <Link to="/">Back to Home page</Link>
-    </div>
-  );
+    if (error) {
+        return <h2>{error}</h2>;
+    }
+
+    return (
+        <div>
+            <h1>User Details</h1>
+
+            {data.map((user) => (
+                <div key={user.id}>
+                    <h3>{user.name}</h3>
+                    <p>Email: {user.email}</p>
+                    <p>Username: {user.username}</p>
+                    <hr />
+                </div>
+            ))}
+        </div>
+    );
 }
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/weather" element={<Weather />} />
-    </Routes>
-  );
+    return (
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/weather" element={<Weather />} />
+            <Route path="/users" element={<Users />} />
+        </Routes>
+    );
 }
 
 export default App;
+
+
+
