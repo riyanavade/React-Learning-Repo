@@ -13,6 +13,7 @@ import useFetch from "./hooks/useFetch";
 
 import Navbar from "./components/Navbar";
 import { AppContext } from "./context/AppContext";
+import Movies from "./pages/Movies";
 
 //import {useState} from 'react'
 
@@ -703,6 +704,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/weather" element={<Weather />} />
             <Route path="/users" element={<Users />} />
+            <Route path="/movies" element={<Movies />} />
         </Routes>
         </div>
     );
