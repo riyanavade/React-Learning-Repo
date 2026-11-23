@@ -297,3 +297,16 @@ button {
     margin: 5px;
     cursor: pointer;
 }
+.movie-filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.movie-filters input,
+.movie-filters select {
+  padding: 10px;
+  border-radius: 5px;
+}
