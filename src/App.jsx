@@ -13,7 +13,7 @@ import useFetch from "./hooks/useFetch";
 
 import Navbar from "./components/Navbar";
 import { AppContext } from "./context/AppContext";
-import Movies from "./pages/Movies";
+import Movies from "./pages/movies";
 
 //import {useState} from 'react'
 
